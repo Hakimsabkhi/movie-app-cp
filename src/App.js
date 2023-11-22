@@ -1,36 +1,36 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
-import Navigation from './components/Navigation'; // Import the Navigation component
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './components/Navigation';
 import MovieList from './components/MovieList';
 import AddMovieForm from './components/AddMovieForm';
 import { Modal, Button } from 'react-bootstrap';
+import moviesData from './data/movieData'; // Import the predefined movies
 
 const App = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(moviesData); // Initialize with predefined movies
   const [searchTerm, setSearchTerm] = useState('');
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false);
 
-  const addMovie = (movie) => {
+  const addMovie = movie => {
     setMovies([...movies, { ...movie, id: Date.now() }]);
-    setShowModal(false); // Close the modal after adding a movie
+    setShowModal(false);
   };
 
   const handleFilterChange = (term) => {
     setSearchTerm(term.toLowerCase());
   };
 
-  const filteredMovies = movies.filter(
-    (movie) =>
-      movie.title.toLowerCase().includes(searchTerm) ||
-      movie.rating.toString().includes(searchTerm)
+  const filteredMovies = movies.filter(movie =>
+    movie.title.toLowerCase().includes(searchTerm) ||
+    movie.rating.toString().includes(searchTerm)
   );
 
   return (
     <div>
       <Navigation onFilterChange={handleFilterChange} />
 
-      <div className='container mt-4'>
-        <Button variant='primary' onClick={() => setShowModal(true)}>
+      <div className="container mt-4">
+        <Button variant="primary" onClick={() => setShowModal(true)}>
           Add Movie
         </Button>
 
