@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Rating from 'react-rating-stars-component';
+import Rating from "@mui/material/Rating";
 
 const AddMovieForm = ({ onNewMovie }) => {
   const [newMovie, setNewMovie] = useState({
     title: '',
     description: '',
     posterURL: '',
-    rating: 0 // Initialize rating
+    rating: 0, // Initialize rating
   });
 
   const handleSubmit = (e) => {
@@ -16,47 +16,54 @@ const AddMovieForm = ({ onNewMovie }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-3">
-      <div className="form-group">
+    <form onSubmit={handleSubmit} className='mb-3'>
+      <div className='form-group'>
         <label>Title</label>
-        <input 
-          type="text" 
-          className="form-control" 
-          value={newMovie.title} 
+        <input
+          type='text'
+          className='form-control'
+          value={newMovie.title}
           onChange={(e) => setNewMovie({ ...newMovie, title: e.target.value })}
-          required 
+          required
         />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <label>Description</label>
-        <textarea 
-          className="form-control" 
-          value={newMovie.description} 
-          onChange={(e) => setNewMovie({ ...newMovie, description: e.target.value })} 
-          required 
+        <textarea
+          className='form-control'
+          value={newMovie.description}
+          onChange={(e) =>
+            setNewMovie({ ...newMovie, description: e.target.value })
+          }
+          required
         />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <label>Poster URL</label>
-        <input 
-          type="text" 
-          className="form-control" 
-          value={newMovie.posterURL} 
-          onChange={(e) => setNewMovie({ ...newMovie, posterURL: e.target.value })} 
-          required 
+        <input
+          type='text'
+          className='form-control'
+          value={newMovie.posterURL}
+          onChange={(e) =>
+            setNewMovie({ ...newMovie, posterURL: e.target.value })
+          }
+          required
         />
       </div>
-      <div className="form-group">
+      <div className='form-group'>
         <label>Rating</label>
-        <Rating 
-          count={10}
-          size={24}
-          activeColor="#ffd700"
+        <Rating
+          name='simple-controlled'
+          max={10}
           value={newMovie.rating}
-          onChange={(value) => setNewMovie({ ...newMovie, rating: value })}
+          onChange={(event, newValue) => {
+            setNewMovie({ ...newMovie, rating: newValue });
+          }}
         />
       </div>
-      <button type="submit" className="btn btn-primary">Add Movie</button>
+      <button type='submit' className='btn btn-primary'>
+        Add Movie
+      </button>
     </form>
   );
 };
