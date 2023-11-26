@@ -4,10 +4,11 @@ import Navigation from './components/Navigation';
 import MovieList from './components/MovieList';
 import AddMovieForm from './components/AddMovieForm';
 import { Modal, Button } from 'react-bootstrap';
-import moviesData from './data/movieData'; // Import the predefined movies
+import moviesData from './data/movieData';
+
 
 const App = () => {
-  const [movies, setMovies] = useState(moviesData); // Initialize with predefined movies
+  const [movies, setMovies] = useState(moviesData);
   const [searchTerm, setSearchTerm] = useState('');
   const [showModal, setShowModal] = useState(false);
 

@@ -51,6 +51,18 @@ const AddMovieForm = ({ onNewMovie }) => {
         />
       </div>
       <div className='form-group'>
+        <label>Trailer URL</label>
+        <input
+          type='text'
+          className='form-control'
+          value={newMovie.trailerURL}
+          onChange={(e) =>
+            setNewMovie({ ...newMovie, posterURL: e.target.value })
+          }
+          required
+        />
+      </div>
+      <div className='form-group'>
         <label>Rating</label>
         <Rating
           name='simple-controlled'
@@ -61,6 +73,7 @@ const AddMovieForm = ({ onNewMovie }) => {
           }}
         />
       </div>
+      
       <button type='submit' className='btn btn-primary'>
         Add Movie
       </button>
