@@ -6,13 +6,13 @@ const AddMovieForm = ({ onNewMovie }) => {
     title: '',
     description: '',
     posterURL: '',
-    rating: 0, // Initialize rating
+    rating: 0, 
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onNewMovie(newMovie);
-    setNewMovie({ title: '', description: '', posterURL: '', rating: 0 }); // Reset form after submission
+    setNewMovie({ title: '', description: '', posterURL: '', rating: 0 }); // 
   };
 
   return (
